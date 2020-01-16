@@ -2,21 +2,16 @@ import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 
-
 const config = {
-apiKey: "AIzaSyA-xdeio0RmRnBBVhl6jMN_i6VeqNUFpsU",
-authDomain: "auth-fbtut.firebaseapp.com",
-databaseURL: "https://auth-fbtut.firebaseio.com",
-projectId: "auth-fbtut",
-storageBucket: "auth-fbtut.appspot.com",
-messagingSenderId: "91453686719",
-appId: "1:91453686719:web:b4254801a9a4cd2ef6d70a",
-measurementId: "G-HVQ5QM1J25"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
 };
-//console.log(config);
 
 class Firebase {
-  
   constructor() {
     app.initializeApp(config);
 
@@ -24,25 +19,26 @@ class Firebase {
     this.db = app.database();
   }
 
-  // *** Auth API *** //
-  doCreateUserWithEmailAndPassword = (email, password) => this.auth.createUserWithEmailAndPassword(email, password);
-  
-  doSignInWithEmailAndPassword = (email, password) => this.auth.signInWithEmailAndPassword(email, password);
+  // *** Auth API ***
+
+  doCreateUserWithEmailAndPassword = (email, password) =>
+    this.auth.createUserWithEmailAndPassword(email, password);
+
+  doSignInWithEmailAndPassword = (email, password) =>
+    this.auth.signInWithEmailAndPassword(email, password);
 
   doSignOut = () => this.auth.signOut();
 
-  doPasswordReset = email => this.authsendPasswordResetEmail(email);
+  doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
 
-  doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
+  doPasswordUpdate = password =>
+    this.auth.currentUser.updatePassword(password);
 
+  // *** User API ***
 
+  user = uid => this.db.ref(`users/${uid}`);
 
-//******* USER API ******/
-
-user = uid =>  this.db.ref(`user/${uid}`);
-
-user = () => this.db.ref ('users');
-
+  users = () => this.db.ref('users');
 }
 
 export default Firebase;
