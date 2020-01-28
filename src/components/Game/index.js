@@ -1,4 +1,6 @@
 import React from 'react'
+// import Home from '../Home'
+import {Link} from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core" 
 import {
@@ -13,6 +15,7 @@ class Game extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      isClicked: false,
       gameMessage: "",
       playerMessage: "",
       player1: {
@@ -65,49 +68,52 @@ class Game extends React.Component {
       this.setState({player1,
         gameMessage: "Player 1 just smashed"})
       }
-      if(choice === 'paper' && cpuPlayer === 'scissors') {
-        botPlayer.score += 1
-        this.setState({botPlayer,
-          gameMessage: "Computer just whooped that candy ass"})
-        }
-        if(choice === 'scissors' && cpuPlayer === 'rock') {
-          botPlayer.score += 1
-          this.setState({botPlayer,
-            gameMessage: "Computer just whooped that candy ass"})
-          }
-          if(choice === 'scissors' && cpuPlayer === 'paper') {
-            player1.score += 1
-            this.setState({player1,
-              gameMessage: "Player 1 crushed the computer"})
-            }
-            console.log('check this', player1)
-            this.setState({playerMessage: "The Computer picked "})
-          }
+    if(choice === 'paper' && cpuPlayer === 'scissors') {
+      botPlayer.score += 1
+      this.setState({botPlayer,
+        gameMessage: "Computer just whooped that candy ass"})
+      }
+    if(choice === 'scissors' && cpuPlayer === 'rock') {
+      botPlayer.score += 1
+      this.setState({botPlayer,
+        gameMessage: "Computer just whooped that candy ass"})
+      }
+    if(choice === 'scissors' && cpuPlayer === 'paper') {
+      player1.score += 1
+      this.setState({player1,
+        gameMessage: "Player 1 crushed the computer"})
+      }
+      console.log('check this', player1)
+      this.setState({playerMessage: "The Computer picked "})
+      }
+      
+      render() {
+        const {gameMessage} = this.state;
+        const {playerMessage} = this.state;
+        
+        return (
+          <>
+            <Link to = '/home'>
+             <button className = 'home-style'>Return to Menu</button>
+            </Link>
           
-          
-          render() {
-            const {gameMessage} = this.state;
-            const {playerMessage} = this.state;
-            
-            return (
-              <div className= "buttons">
-          <div className= 'score-board'>
-            {/* <h1 className= 'player-name'>{this.state.player1}</h1> */}
-            <h2 className= 'play-score'>{this.state.player1.score}</h2>
-            <h2 className= 'cpu-score'>{this.state.botPlayer.score}</h2>
-          </div>
+          <div className= "buttons">
+            <div className= 'score-board'>
+              <h2 className= 'play-score'>{this.state.player1.score}</h2>
+              <h2 className= 'cpu-score'>{this.state.botPlayer.score}</h2>
+            </div>
           <div className= 'results'>
-          <h2>{playerMessage} {this.state.botPlayer.choice}</h2>
+            <h2>{playerMessage} {this.state.botPlayer.choice}</h2>
             <p>{gameMessage}</p>
           </div>
           <div className = 'btn-style'>
-            <button className= "for-style1" onClick={() => this.gameRules('rock')}><FontAwesomeIcon className= 'fist' icon={faHandRock} size= '3x'/></button>
+            <button className= "for-style1" onClick={() => this.gameRules('rock')}><FontAwesomeIcon className= 'fist' icon={faHandRock} size= '3x' /></button>
             <button className= "for-style2" onClick={() =>this.gameRules('paper')} ><FontAwesomeIcon className= 'knife-hand' icon={faHandPaper} size= '3x' /></button>
             <button className= "for-style3" onClick={() =>this.gameRules('scissors')} ><FontAwesomeIcon className= 'scissor-hand' icon={faHandScissors} size= '3x' /></button>
           </div>
           </div>
+           </>
         )
       }
     }
-    // export const gameStart = Game
     export default Game 
