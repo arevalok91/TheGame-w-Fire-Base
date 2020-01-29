@@ -12,18 +12,13 @@ class Dashboard extends React.Component {
       loading: false,
     };
   }
-  componentDidMount() {
-    
-  }
-
-
   render() {
 
     return (
       <div className="view-container-dashboard">
         <img src={rps} alt='RPS main backgroud' />
         <Link to = {ROUTES.SIGN_IN}>
-          <button className = 'signin-btn' onClick ={NavigationNonAuth}></button>
+          <button className = 'signin-btn' onClick ={NavigationNonAuth}>Sign In</button>
         </Link>
         <div className="dashboard-content">
           {/* <img src={rps} alt='RPS main backgroud' /> */}
