@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-
 import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
@@ -30,8 +29,9 @@ class SignInFormBase extends Component {
   }
 
   onSubmit = event => {
+    
     const { email, password } = this.state;
-
+    console.log(email, password)
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {

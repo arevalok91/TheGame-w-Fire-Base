@@ -1,4 +1,8 @@
 import React from "react";
+import rps from '../../assets/images/rps.jpg'
+import * as ROUTES from '../../constants/routes';
+import { Link } from 'react-router-dom';
+import NavigationNonAuth from '../../components/Navigation'
 // import labsLogo from '../../assets/images/ctd-labs-logo.png'
 
 class Dashboard extends React.Component {
@@ -16,11 +20,13 @@ class Dashboard extends React.Component {
   render() {
 
     return (
-      <div className="view-container dashboard">
+      <div className="view-container-dashboard">
+        <img src={rps} alt='RPS main backgroud' />
+        <Link to = {ROUTES.SIGN_IN}>
+          <button className = 'signin-btn' onClick ={NavigationNonAuth}></button>
+        </Link>
         <div className="dashboard-content">
-          <p>FireBase</p>
-          
-        
+          {/* <img src={rps} alt='RPS main backgroud' /> */}
         </div>
       </div>
     );
@@ -29,3 +35,11 @@ class Dashboard extends React.Component {
 
 
 export default Dashboard
+
+// import React from 'react'
+// import rps from '../../assets/images/rps.jpg'
+
+// const Landing = () => {
+//   return <img src={rps} alt='RPS main backgroud' />
+// }
+// export default Landing

@@ -22,98 +22,115 @@ class Game extends React.Component {
         playerName: "Player1",
         score: 0,
         highScore: 0,
-        streak: false
+        streak: 0
       },
       botPlayer:  {
         playerName: "CPU",
         score: 0,
         streak: 0,
-        choice: ""
+        choice: "",
       }
     }
   }
-
+  
   // Game rules
   gameRules = (choice) => {
     let choices = ['rock','paper','scissors']
     let cpuPlayer = choices[Math.floor(Math.random() * 3)]
     let botPlayer = this.state.botPlayer
+    let cpuScore = this.state.botPlayer.score
     let player1 = this.state.player1
+    let playerScore = this.state.player1.score
+    let winner = ""
+    let gameMessage = ""
+    let streak = this.state.player1.streak
+    console.log('does it work?', streak)
+    console.log('show me', cpuPlayer)
     botPlayer.choice = cpuPlayer
     this.setState({botPlayer: botPlayer})
     
-    console.log('hello', botPlayer)
     if(choice === cpuPlayer) {
-      this.setState({
-        botPlayer, player1,
-        gameMessage: "The game is tied!"
-      })
+      streak = 0
+      gameMessage =  'tie game';
+      winner = 'NA'
     }
     if(choice === 'rock' && cpuPlayer === 'paper') {
-      botPlayer.score += 1
-      this.setState({
-        botPlayer,
-        gameMessage: "Computer just woop that ass!"
-      })
+      cpuScore += 1
+      streak = 0
+      gameMessage = ""
+      winner = ""
     }
     if(choice === 'rock' && cpuPlayer === 'scissors') {
-      player1.score += 1
-      this.setState({
-        player1,
-        gameMessage: "Player 1 just smashed!"
-      })
+      playerScore += 1
+      streak += 1
+      gameMessage = ""
+      winner = ""
     }
     if(choice === 'paper' && cpuPlayer === 'rock') {
       player1.score += 1
-      this.setState({player1,
-        gameMessage: "Player 1 just smashed"})
-      }
+      streak += 1
+      gameMessage = ""                                // need to upload list of messages
+      winner = ""
+    }
     if(choice === 'paper' && cpuPlayer === 'scissors') {
-      botPlayer.score += 1
-      this.setState({botPlayer,
-        gameMessage: "Computer just whooped that candy ass"})
-      }
+      cpuScore += 1
+      streak = 0
+      gameMessage = ""                                // need to upload list of messages
+      winner = ""                                     // say something slick
+    }
     if(choice === 'scissors' && cpuPlayer === 'rock') {
-      botPlayer.score += 1
-      this.setState({botPlayer,
-        gameMessage: "Computer just whooped that candy ass"})
-      }
+      cpuScore += 1
+      streak = 0
+      gameMessage = ""                              // need to upload list of messages
+      winner = ""                                   // say something slick
+    }
     if(choice === 'scissors' && cpuPlayer === 'paper') {
       player1.score += 1
-      this.setState({player1,
-        gameMessage: "Player 1 crushed the computer"})
-      }
-      console.log('check this', player1)
-      this.setState({playerMessage: "The Computer picked "})
-      }
-      
-      render() {
-        const {gameMessage} = this.state;
-        const {playerMessage} = this.state;
-        
-        return (
-          <>
-            <Link to = '/home'>
-             <button className = 'home-style'>Return to Menu</button>
-            </Link>
-          
-          <div className= "buttons">
-            <div className= 'score-board'>
-              <h2 className= 'play-score'>{this.state.player1.score}</h2>
-              <h2 className= 'cpu-score'>{this.state.botPlayer.score}</h2>
-            </div>
-          <div className= 'results'>
-            <h2>{playerMessage} {this.state.botPlayer.choice}</h2>
-            <p>{gameMessage}</p>
-          </div>
-          <div className = 'btn-style'>
-            <button className= "for-style1" onClick={() => this.gameRules('rock')}><FontAwesomeIcon className= 'fist' icon={faHandRock} size= '3x' /></button>
-            <button className= "for-style2" onClick={() =>this.gameRules('paper')} ><FontAwesomeIcon className= 'knife-hand' icon={faHandPaper} size= '3x' /></button>
-            <button className= "for-style3" onClick={() =>this.gameRules('scissors')} ><FontAwesomeIcon className= 'scissor-hand' icon={faHandScissors} size= '3x' /></button>
-          </div>
-          </div>
-           </>
-        )
-      }
+      streak += 1
+      gameMessage = ""                              // need to upload list of messages
+      winner = ""                                   // say something slick
     }
-    export default Game 
+      console.log('check this', player1)
+
+      this.setState({
+        botPlayer, player1,
+        gameMessage: gameMessage, winner,
+        playerScore: playerScore,
+        cpuScore: cpuScore,
+        streak: streak
+      })
+    }
+    
+    render() {
+      const {gameMessage} = this.state;
+      
+      return (
+        <>
+          <Link to = '/home'>
+           <button className = 'home-style'>Return to Menu</button>
+          </Link>
+        
+        <div className= "buttons">
+          <div className= 'score-board'>
+            <h2 className= 'play-score'>Player 1: {this.state.playerScore}</h2>
+            <h2 className= 'cpu-score'>CPU: {this.state.cpuScore}</h2>
+            <h3 className= 'streak'>{this.state.streak}</h3>
+          </div>
+        <div className= 'results'>
+          <h2>The computer picked {this.state.botPlayer.choice}</h2>
+          <p>{gameMessage}</p>
+        </div>
+        <div className = 'btn-style'>
+          <button className= "for-style1" onClick={() => this.gameRules('rock')}><FontAwesomeIcon className= 'fist' icon={faHandRock} size= '3x' /></button>
+          <button className= "for-style2" onClick={() =>this.gameRules('paper')} ><FontAwesomeIcon className= 'knife-hand' icon={faHandPaper} size= '3x' /></button>
+          <button className= "for-style3" onClick={() =>this.gameRules('scissors')} ><FontAwesomeIcon className= 'scissor-hand' icon={faHandScissors} size= '3x' /></button>
+        </div>
+        </div>
+         </>
+      )
+    }
+  }
+  export default Game 
+
+  
+  
