@@ -5,6 +5,8 @@ import Navigation from '../Navigation';
 import Footer from '../Footer';
 import Dashboard from '../../containers/Dashboard';
 import Game from '../Game';
+// ßimport Landing from '../../containers/Landing';
+
 import SignUpPage from '../SignUp';
 import SignInPage from '../SignIn';
 import PasswordForgetPage from '../PasswordForget';

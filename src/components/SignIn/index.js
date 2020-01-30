@@ -17,9 +17,9 @@ const SignInPage = () => (
 );
 
 const INITIAL_STATE = {
-  email: '',
-  password: '',
-  error: null,
+	email: '',
+	password: '',
+	error: null
 };
 
 class SignInFormBase extends Component {
@@ -85,10 +85,7 @@ class SignInFormBase extends Component {
   }
 }
 
-const SignInForm = compose(
-  withRouter,
-  withFirebase,
-)(SignInFormBase);
+const SignInForm = compose(withRouter, withFirebase)(SignInFormBase);
 
 export default SignInPage;
 
