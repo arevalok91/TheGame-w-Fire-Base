@@ -6,9 +6,10 @@ import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
+
 const SignInPage = () => (
-  <div>
-    <h1>SignIn</h1>
+  <div className = 'the-whole-thing'>
+    {/* <h1>SignIn</h1> */}
     <SignInForm />
     <PasswordForgetLink />
     <SignUpLink />
@@ -58,20 +59,22 @@ class SignInFormBase extends Component {
       <div className="signin-wrapper">
       <form onSubmit={this.onSubmit}>
           <input
+            className = 'user-input'
             name="email"
             value={email}
             onChange={this.onChange}
             type="text"
             placeholder="Email Address"
-          />
+           /> <br></br>
           <input
+            className = 'pass-input'
             name="password"
             value={password}
             onChange={this.onChange}
             type="password"
             placeholder="Password"
-          />
-          <button disabled={isInvalid} type="submit">
+          /> <br></br>
+          <button className = 'btn' disabled={isInvalid} type="submit">
             Sign In
           </button>
 

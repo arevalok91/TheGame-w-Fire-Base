@@ -10,7 +10,7 @@ const config = {
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
 };
-console.log('is this what i need', config.projectId)
+
 class Firebase {
   constructor() {
     app.initializeApp(config);

@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Red+Hat+Text&display=swap');
+.the-whole-thing {
+  margin: auto;
+  border-style: solid;
+}
+
+.user-input, .pass-input {
+  width: 350px;
+  height: 30px;
+  border-radius: 16px;
+  font-family: 'Red Hat Text', sans-serif; 
+  font-size: 15px;
+  padding-left: 3px;
+}
+
+.user-input {
+  margin-bottom: 14px;
+}
+
+.btn {
+  width: 345px;
+  height: 30px;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 15px;
+  margin-top: 14px;
+  border-radius: 12px;
+}
+
+p {
+  font-family: 'Red Hat Text', sans-serif;
+  margin-top: 14px;
+}

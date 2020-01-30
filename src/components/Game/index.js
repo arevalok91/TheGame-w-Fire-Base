@@ -77,6 +77,7 @@ class Game extends React.Component {
     let streak = this.state.player1.streak
     let winLosePct = this.state.WinLosePercentage       // its undefined
     console.log('does it work?', streak)
+    console.log('the updated player', player1)
     console.log('show me', cpuPlayer)
     console.log('percent', winLosePct)
     botPlayer.choice = cpuPlayer
@@ -122,13 +123,10 @@ class Game extends React.Component {
       streak += 1
       gameMessage = ""                              // need to upload list of messages
       winner = ""                                   // say something slick
+
+      
     }
 
-   
-
-      console.log(this.state.percent)
-      console.log('check this', player1)
-      
       this.setState({
         botPlayer, player1,
         gameMessage: gameMessage, winner,
