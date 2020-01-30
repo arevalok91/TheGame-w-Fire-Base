@@ -34,11 +34,15 @@ class Firebase {
   doPasswordUpdate = password =>
     this.auth.currentUser.updatePassword(password);
 
+    doCreateGameHistory
+
   // *** User API ***
 
   user = uid => this.db.ref(`users/${uid}`);
 
   users = () => this.db.ref('users');
+
+  games = () => this.db.ref('games')
 }
 
 export default Firebase;
