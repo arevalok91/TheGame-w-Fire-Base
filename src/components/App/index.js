@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Navigation from '../Navigation';
 import Footer from '../Footer';
-import Dashboard from '../../containers/Dashboard';
+import Landing from '../../containers/Landing';
 
 import SignUpPage from '../SignUp';
 import SignInPage from '../SignIn';
@@ -22,7 +22,7 @@ const App = () => (
 
 			<hr />
 
-			<Route exact path={ROUTES.LANDING} component={Dashboard} />
+			<Route exact path={ROUTES.LANDING} component={Landing} />
 
 			<Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
 			<Route exact path={ROUTES.SIGN_IN} component={SignInPage} />
