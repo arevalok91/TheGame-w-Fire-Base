@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
+
+.game-head {
+  font-family: 'Fredoka One', cursive;
+  color: #000;
+}
+
+.game-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /*display: none;*/
+  background: white;
+  transform: translateZ(0);
+}
+
+.start-game {
+  width: 150px;
+  height: 50px;
+  font-size: 20px;
+  font-family: 'Fredoka One', cursive;
+  border-radius: 6vh;
+}
